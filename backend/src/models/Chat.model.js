@@ -4,7 +4,7 @@ const chatSchema = new mongoose.Schema(
   {
     chatName: {
       type: String,
-      trime: true,
+      trim: true,
     },
     isChatGroup: {
       type: Boolean,
