@@ -3,8 +3,12 @@ const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
 const cors = require("cors");
-const db = require("../backend/src/config/mongoose");
+const db = require("./src/config/mongoose");
 db();
+const indexRouter = require("./src/routes/index.routes");
+app.use(express.json());
+app.use("/api/", indexRouter);
+
 app.listen(process.env.PORT, (err) => {
   if (err) {
     console.log("something wrong while listening to port");
