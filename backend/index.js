@@ -6,6 +6,13 @@ const cors = require("cors");
 const db = require("./src/config/mongoose");
 db();
 const indexRouter = require("./src/routes/index.routes");
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  }),
+);
+
 app.use(express.json());
 app.use("/api/", indexRouter);
 
