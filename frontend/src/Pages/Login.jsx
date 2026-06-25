@@ -27,7 +27,7 @@ export const Login = () => {
       localStorage.setItem("token", data.data.token);
       console.log("JWT saved:", data.data.token);
 
-      connectSocket(data.token);
+      connectSocket(data.data.token);
       navigate("/chat");
     } catch (err) {
       console.error("Login error:", err);
