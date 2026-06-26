@@ -31,7 +31,7 @@ const signIn = async (req, res) => {
   try {
     const { email, password } = req.body;
     //console.log(req.body);
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).lean();
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -40,6 +40,7 @@ const signIn = async (req, res) => {
       return res.status(401).json({ message: "Invalid Credentials" });
     }
     const token = generateJwtToken(user._id);
+    delete user.password;
     return res.status(200).json({
       data: {
         user,
@@ -48,6 +49,7 @@ const signIn = async (req, res) => {
       message: "Sign In successful",
     });
   } catch (error) {
+    console.log(error);
     return res
       .status(500)
       .json({ error: error, message: "Something went wrong" });

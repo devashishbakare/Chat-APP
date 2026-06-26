@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { connectSocket } from "../socket";
+import { socket, connectSocket } from "../socket";
 import { useState } from "react";
 
 export const Login = () => {
@@ -26,8 +26,11 @@ export const Login = () => {
       console.log(data.data);
       localStorage.setItem("token", data.data.token);
       console.log("JWT saved:", data.data.token);
+      localStorage.setItem("userInfo", JSON.stringify(data.data.user));
 
       connectSocket(data.data.token);
+      socket.emit("setup", data.data.user);
+
       navigate("/chat");
     } catch (err) {
       console.error("Login error:", err);

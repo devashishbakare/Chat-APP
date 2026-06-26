@@ -34,6 +34,12 @@ io.on("connection", (socket) => {
     socket.emit("message", data);
   });
 
+  socket.on("setup", (userData) => {
+    socket.join(userData._id);
+    console.log("User room joined:", userData._id);
+    socket.emit("connected");
+  });
+
   socket.on("disconnect", () => {
     console.log("socket disconnected:", socket.id);
   });
