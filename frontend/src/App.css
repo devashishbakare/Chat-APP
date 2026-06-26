@@ -1,0 +1,36 @@
+/* App-level styles: keep minimal — chat UI uses Tailwind. */
+
+.App {
+  min-height: 100vh;
+}
+
+/* Smooth scrollbars for chat panes */
+.App *::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.App *::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.App *::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.22);
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+
+.dark .App *::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+
+.dark .App *::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.24);
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
