@@ -40,6 +40,11 @@ io.on("connection", (socket) => {
     socket.emit("connected");
   });
 
+  socket.on("join chat", (chatId) => {
+    socket.join(chatId);
+    console.log("Joined chat:", chatId);
+  });
+
   socket.on("disconnect", () => {
     console.log("socket disconnected:", socket.id);
   });
