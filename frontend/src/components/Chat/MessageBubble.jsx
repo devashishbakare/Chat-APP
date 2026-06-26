@@ -1,3 +1,4 @@
+import { reactionPalette } from "../../Pages/Data";
 export const MessageBubble = ({ message }) => {
-  return <div>Message: {message.text}</div>;
+  return <div className="flex items-start gap-2"></div>;
 };
