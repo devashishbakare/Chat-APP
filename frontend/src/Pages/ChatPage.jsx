@@ -1,10 +1,15 @@
 import { useState } from "react";
 import { Sidebar } from "../components/Chat/Sidebar";
-import { chats, messagesByChat as activeMessages } from "./Data";
+import { chats, messagesByChat } from "./Data";
 import { ChatWindow } from "../components/Chat/ChatWindow";
 export const ChatPage = ({}) => {
   const [mobileView, setMobileView] = useState("list"); // "list" | "chat"
+  const activeMessages = messagesByChat[1];
+  const activeChat = chats[0];
   function onToggleTheme() {}
+
+  function handleSend() {}
+  function handleReact() {}
 
   return (
     <div className="h-screen bg-neutral-100 dark:bg-black flex">
@@ -18,7 +23,14 @@ export const ChatPage = ({}) => {
             mobileView === "chat" ? "flex" : "hidden md:flex",
           ].join(" ")}
         >
-          <ChatWindow messages={activeMessages[1]} />
+          <ChatWindow
+            chat={activeChat}
+            messages={activeMessages}
+            onSend={handleSend}
+            onReact={handleReact}
+            onBack={() => setMobileView("list")}
+            showBackButton={true}
+          />
         </div>
       </div>
     </div>
