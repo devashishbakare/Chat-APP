@@ -1,11 +1,20 @@
 import { ChatListItem } from "./ChatListItem";
 import React, { useMemo, useState } from "react";
 import { Search, Pencil, Sun, Moon, X } from "lucide-react";
-export const Sidebar = ({ chats, onToggleTheme, theme }) => {
+export const Sidebar = ({
+  chats,
+  activeChatId,
+  onSelectChat,
+  theme,
+  onToggleTheme,
+}) => {
   const [query, setQuery] = useState("");
   console.log("sideBar rendering");
   //console.log(chats);
-  function onClick() {}
+  function onClick(chatId) {
+    //console.log("chatId received in sidebar", chatId);
+    onSelectChat(chatId);
+  }
   function active() {}
   return (
     <>

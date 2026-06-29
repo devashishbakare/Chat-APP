@@ -3,7 +3,7 @@ export const ChatListItem = ({ chat, active, onClick }) => {
   return (
     <button
       type="button"
-      onClick={onClick}
+      onClick={() => onClick(chat.id)}
       data-testid={`chat-list-item-${chat.id}`}
       className={[
         "group w-full text-left px-3 py-3 rounded-2xl flex items-start gap-3 transition-all duration-200",

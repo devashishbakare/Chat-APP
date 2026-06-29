@@ -2,17 +2,23 @@ import { useState } from "react";
 import { Sidebar } from "../components/Chat/Sidebar";
 import { chats, messagesByChat } from "./Data";
 import { ChatWindow } from "../components/Chat/ChatWindow";
-export const ChatPage = ({}) => {
+export const ChatPage = () => {
   const [mobileView, setMobileView] = useState("list"); // "list" | "chat"
   const [theme, setTheme] = useState("dark");
-  const activeMessages = messagesByChat[1];
   const [activeChatId, setActiveChatId] = useState(1);
+  const [activeMessages, setActiveMessages] = useState(messagesByChat[1]);
+  //const activeMessages = messagesByChat[1];
+
   const activeChat = chats[0];
   function onToggleTheme() {}
 
   function handleSend() {}
   function handleReact() {}
-  function handleSelectChat() {}
+  function handleSelectChat(chatId) {
+    //console.log("chatId received in chatpage", chatId);
+    setActiveChatId(chatId);
+    setActiveMessages(messagesByChat[chatId]);
+  }
 
   return (
     <div
